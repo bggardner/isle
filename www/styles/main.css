@@ -1,0 +1,98 @@
+.navbar-brand h3 {
+  margin-top: -0.2rem; /* Vertically centers */
+}
+.navbar-brand img {
+  max-height: calc(1.3rem + .6vw); /* .h3 font-size */
+}
+
+img[src*="/images/thumbs/"] {
+  max-height: 3rem;
+  max-width: 5rem;
+}
+
+/* Node table formatting */
+[data-node] td:first-child {
+  padding: 0;
+  width: 2.75rem;
+}
+[data-node] td:first-child:empty {
+  width: 0;
+}
+[data-node]:not([data-node="transaction"]) td:last-child {
+  text-align: right;
+}
+table[data-node="asset"] td:nth-child(2),
+table[data-node="model"] td:nth-child(2) {
+  text-align: center;
+}
+
+/* Responsive .navbar.fixed-top fix */
+body {
+  padding-top: 3.625rem;
+}
+
+/* Modified from https://getbootstrap.com/docs/5.0/examples/sidebars/sidebars.css */
+.sidebar {
+  /* display: flex; */
+}
+
+.sidebar .btn-toggle {
+  display: inline-flex;
+  align-items: center;
+  /* padding: .25rem .5rem; */
+  padding: 0;
+  font-weight: 600;
+  color: rgba(0, 0, 0, .65);
+  background-color: transparent;
+  border: 0;
+}
+.sidebar .btn-toggle:hover,
+.sidebar .btn-toggle:focus {
+  color: rgba(0, 0, 0, .85);
+  /* background-color: #d2f4ea; */
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.sidebar .btn-toggle::before {
+  width: 1.25em;
+  line-height: 0;
+  content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%280,0,0,.5%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
+  transition: transform .35s ease;
+  transform-origin: .5em 50%;
+}
+
+.sidebar .btn-toggle[aria-expanded="true"] {
+  color: rgba(0, 0, 0, .85);
+}
+.sidebar .btn-toggle[aria-expanded="true"]::before {
+  transform: rotate(90deg);
+}
+
+.sidebar .btn-toggle-nav a {
+  display: inline-flex;
+  /* padding: .1875rem .5rem; */
+  padding: .1875rem 0;
+  margin-top: .125rem;
+  /* margin-left: 1.25rem; */
+  text-decoration: none;
+}
+.sidebar .btn-toggle-nav a:hover,
+.sidebar .btn-toggle-nav a:focus {
+  /* background-color: #d2f4ea; */
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Can't remember if borrowed or original */
+.tagsinput { cursor: text; }
+.tagsinput input {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  outline: none;
+  padding: 0;
+  width: auto !important;
+  max-width: inherit;
+}
+.tagsinput .badge { margin-right: .25rem; }
+.tagsinput .badge [data-role="remove"] { margin-left: .25rem;  cursor: pointer; }
+.tagsinput .badge [data-role="remove"]::after { content: "\00d7"; padding: 0 2px; }

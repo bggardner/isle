@@ -1,8 +1,4 @@
-.DS_Store
-.bash_history
-.dropbox
-.dropbox-master
-Thumbs.db
-._*
-.idea
-.vagrant
+www/includes/plugins
+www/includes/settings.php
+www/uploads
+.user.ini
