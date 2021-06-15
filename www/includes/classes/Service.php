@@ -182,7 +182,7 @@ class Service
 
         $thumbs_dir = $_POST['uploads_path'] . '/images/thumbs';
         if (!file_exists($thumbs_dir)) {
-            if (!mkdir($thumbs_dir, 0777, true)) {
+            if (!mkdir($thumbs_dir, 0755, true)) {
                 throw new \Exception('Failed to create uploads directory');
             }
         }
@@ -495,9 +495,6 @@ return [
 
         static::deleteFiles(Settings::get('uploads_path'));
         static::deleteFiles(Settings::FILE);
-
-        $_SESSION['message']['type'] = 'success';
-        $_SESSION['message']['text'] = 'Uninstall successful';
     }
 
     protected static function deleteFiles($path)
@@ -519,11 +516,13 @@ return [
                 try {
                     static::install();
                 } catch (\Exception $e) {
-                    static::uninstall();
                     $_SESSION['message'] = [
                         'type' => 'danger',
                         'text' => 'Installation failed: ' . $e->getMessage()
                     ];
+                    try {
+                        static::uninstall();
+                    } catch (\Exception $e) {}
                     require __DIR__ . '/../setup.php';
                     exit;
                 }
