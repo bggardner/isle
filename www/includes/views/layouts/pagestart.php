@@ -44,7 +44,7 @@ $nav_items = [
     ['name' => 'Users', 'path' => 'users', 'role' => ISLE\DataModels\Role::ADMINISTRATOR],
 ];
 foreach ($nav_items as $nav_item) {
-    if (isset($_SESSION['user']) && $_SESSION['user']['role'] >= $nav_item['role']) {
+    if (isset($_SESSION['user']['role']) && $_SESSION['user']['role'] >= $nav_item['role']) {
         echo '
               <li class="nav-item">
                 <a class="nav-link' . ($nav_item['path'] == basename($_SERVER['PHP_SELF'], '.php') ? ' active' : '') . '" href="' . ISLE\Settings::get('web_root') . '/' . $nav_item['path'] . '">

@@ -30,6 +30,18 @@ if (!isset($_SESSION['user'])) {
             ISLE\DataModels\User::DEFAULT,
             ISLE\Settings::get('hooks')['authentication']()
         );
+        ISLE\Service::executeStatement(
+            '
+  UPDATE `' . ISLE\Settings::get('table_prefix') . 'users`
+  SET `name` = ?, `email` = ?
+  WHERE `id` = ?
+            ',
+            [
+                ['value' => $_SESSION['user']['name'], 'type' => PDO::PARAM_STR],
+                ['value' => $_SESSION['user']['email'], 'type' => PDO::PARAM_STR],
+                ['value' => $_SESSION['user']['id'], 'type' => PDO::PARAM_INT]
+            ]
+        );
         unset($_SESSION['state']);
     } catch (Exception $e) {
         $_SESSION['message']['type'] = 'danger';

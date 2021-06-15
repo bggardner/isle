@@ -45,7 +45,7 @@ class Settings
             }
         }
         if (!is_null($key)) {
-            return static::$settings[$key];
+            return static::$settings[$key] ?? null;
         }
         return static::$settings;
     }
